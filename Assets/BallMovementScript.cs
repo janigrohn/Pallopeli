@@ -109,7 +109,7 @@ public class BallMovementScript : MonoBehaviour
         xpos = -xDistance * targetCamera.forward.x;
         //how far do you want camera to be placed on the z-axis
         zpos = -zDistance * targetCamera.forward.z;
-        targetCamera.position = Vector3.Lerp(targetCamera.position, (transform.position + new Vector3(xpos, yPosition, zpos)), 0.05f);
+        targetCamera.position = Vector3.Lerp(targetCamera.position, (transform.position + new Vector3(xpos, yPosition, zpos)), 0.1f);
         //spotLight.position.y = targetCamera.position.y;
         //spotLight.position.x = transform.position.x;
         //spotLight.position.z = transform.position.z;
@@ -142,12 +142,12 @@ public class BallMovementScript : MonoBehaviour
         if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, groundCheckDistance))
         {
             grounded = true;
-            Debug.Log("Grounded");
+            //Debug.Log("Grounded");
         }
         else
         {
             grounded = false;
-            Debug.Log("In air");
+            //Debug.Log("In air");
         }
     }
 
