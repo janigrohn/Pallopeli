@@ -15,7 +15,10 @@ public class LetterSpawner : MonoBehaviour {
     bool readyForNextWord = true;
 
     string currentWord;
-    List<string> wrongLetters= new List<string>();
+    public static List<string> currentWordLettersLeft = new List<string>();
+    public static List<string> wrongLetters= new List<string>();
+
+    public static string letter;
 
     void Start () {
 
@@ -101,7 +104,8 @@ public class LetterSpawner : MonoBehaviour {
                     randomIntForAlphabets = Random.Range(0, alphabets.Count);
                 }
 
-                GameObject variableForPrefab = (GameObject)Resources.LoadAssetAtPath("Assets/Aakkoset/" + alphabets[randomIntForAlphabets].ToUpper() +".obj", typeof(GameObject));
+                GameObject variableForPrefab = (GameObject)Resources.LoadAssetAtPath("Assets/AakkosetPrefab/Letter" + alphabets[randomIntForAlphabets].ToUpper() +".prefab", typeof(GameObject));
+                letter = alphabets[randomIntForAlphabets];
                 Instantiate(variableForPrefab, SelectRandomSpawnpoint(randomIntForSpawnpoint), Quaternion.Euler(90.0f, 0, 90.0f));
                 usedSpawnpoints[randomIntForSpawnpoint] = true;
                 wrongLetters.Add(alphabets[randomIntForAlphabets]);
@@ -122,6 +126,12 @@ public class LetterSpawner : MonoBehaviour {
         word = word.ToLower();
         word = word.Replace(" ", "");
 
+        for (int l = 0; l < word.Length; l++)
+        {
+            currentWordLettersLeft.Add(word.Substring(l, 1));
+            Debug.Log(currentWordLettersLeft[l]);
+        }
+
         if (word.Length < amountOfSpawnpoints)
         {
             for (int i = 0; i < word.Length; i++)
@@ -135,6 +145,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "a";
                             Instantiate(letterA, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -145,6 +156,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "b";
                             Instantiate(letterB, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -155,6 +167,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "c";
                             Instantiate(letterC, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -165,6 +178,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "d";
                             Instantiate(letterD, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -175,6 +189,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "e";
                             Instantiate(letterE, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -185,6 +200,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "f";
                             Instantiate(letterF, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -195,6 +211,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "g";
                             Instantiate(letterG, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -205,6 +222,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "h";
                             Instantiate(letterH, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -215,6 +233,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "i";
                             Instantiate(letterI, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -225,6 +244,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "j";
                             Instantiate(letterJ, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -235,6 +255,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "k";
                             Instantiate(letterK, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -245,6 +266,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "l";
                             Instantiate(letterL, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -255,6 +277,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "m";
                             Instantiate(letterM, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -265,6 +288,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "n";
                             Instantiate(letterN, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -275,6 +299,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "o";
                             Instantiate(letterO, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -285,6 +310,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "p";
                             Instantiate(letterP, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -295,6 +321,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "q";
                             Instantiate(letterQ, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -305,6 +332,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "r";
                             Instantiate(letterR, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -315,6 +343,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "s";
                             Instantiate(letterS, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -325,6 +354,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "t";
                             Instantiate(letterT, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -335,6 +365,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "u";
                             Instantiate(letterU, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -345,6 +376,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "v";
                             Instantiate(letterV, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -355,6 +387,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "w";
                             Instantiate(letterW, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -365,6 +398,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "x";
                             Instantiate(letterX, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -375,6 +409,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "y";
                             Instantiate(letterY, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -385,6 +420,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "z";
                             Instantiate(letterZ, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -395,6 +431,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "å";
                             Instantiate(letterÅ, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -405,6 +442,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "ä";
                             Instantiate(letterÄ, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
@@ -415,6 +453,7 @@ public class LetterSpawner : MonoBehaviour {
                             while (usedSpawnpoints[generatedRandomInt] == true)
                                 generatedRandomInt = Random.Range(0, amountOfSpawnpoints);
 
+                            letter = "ö";
                             Instantiate(letterÖ, SelectRandomSpawnpoint(generatedRandomInt), Quaternion.Euler(90.0f, 0, 90.0f));
                             usedSpawnpoints[generatedRandomInt] = true;
                             break;
