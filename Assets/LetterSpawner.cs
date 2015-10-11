@@ -5,24 +5,31 @@ using System.Collections.Generic;
 public class LetterSpawner : MonoBehaviour {
 
     public Transform letterSpawnpoint0, letterSpawnpoint1, letterSpawnpoint2, letterSpawnpoint3, letterSpawnpoint4, letterSpawnpoint5, letterSpawnpoint6, letterSpawnpoint7, letterSpawnpoint8, letterSpawnpoint9, letterSpawnpoint10, letterSpawnpoint11, letterSpawnpoint12, letterSpawnpoint13, letterSpawnpoint14, letterSpawnpoint15;
-    static int amountOfSpawnpoints = 16;    //MUUTA AINA KUN LISÄÄT SPAWNPOINTEJA
+    static int amountOfSpawnpoints = 16;    // MUUTA AINA KUN LISÄÄT SPAWNPOINTEJA
 
     public Transform letterA, letterB, letterC, letterD, letterE, letterF, letterG, letterH, letterI, letterJ, letterK, letterL, letterM, letterN, letterO, letterP, letterQ, letterR, letterS, letterT, letterU, letterV, letterW, letterX, letterY, letterZ, letterÅ, letterÄ, letterÖ;
+    public Transform star;
+
     string[][] hintsAndWords;
-    bool[] usedSpawnpoints = new bool[amountOfSpawnpoints];     // KAIKKI FALSEKSI KUN SANA SAATU VALMIIKSI
+    bool[] usedSpawnpoints = new bool[amountOfSpawnpoints];
 
     int generatedRandomInt;
     bool readyForNextWord = true;
+    int amountOfWrongLetters;
 
-    string currentWord;
-    public static List<string> currentWordLettersLeft = new List<string>();
+    public static string currentWord;
+    public static string hint;
+    public static List<string> currentWordLettersLeft = new List<string>(); // Muuttuu "*"-merkiksi kun kirjain on otettu
     public static List<string> wrongLetters= new List<string>();
 
     public static string letter;
 
+    public int minimumWrongLetters = 5;
+    public int amountOfStars = 2;
+
     void Start () {
 
-        for (int i = 0; i < amountOfSpawnpoints; i++)   // TEE MYÖS UPDATESSA KUN SANA ON SAATU VALMIIKSI
+        for (int i = 0; i < amountOfSpawnpoints; i++)
         {
             usedSpawnpoints[i] = false;
         }
@@ -34,15 +41,10 @@ public class LetterSpawner : MonoBehaviour {
         hintsAndWords = new string[numRows][];
 
         hintsAndWords[0] = new string[numRows];
-        hintsAndWords[0][0] = "hint1 goes here";
-        hintsAndWords[0][1] = "randomasd";
+        hintsAndWords[0][0] = "hint1 goes here";    // GET-METODILLA LOBBYN SCRIPTISTÄ!!!!!!!!!!!!!!!!!!!
+        hintsAndWords[0][1] = "random";               // GET-METODILLA LOBBYN SCRIPTISTÄ!!!!!!!!!!!!!!!!!!!
 
-        hintsAndWords[1] = new string[numRows];
-        hintsAndWords[1][0] = "hint2 goes here";
-        hintsAndWords[1][0] = "lol";
-
-        // LISÄÄ TÄHÄN VIHJEET JA SANAT
-	}
+    }
 	
 
 
@@ -51,6 +53,7 @@ public class LetterSpawner : MonoBehaviour {
         {
             SpawnLetters(hintsAndWords[0][1]);
             SpawnRandomWrongLetters(currentWord);
+            SpawnStars(amountOfStars);
             readyForNextWord = false;
 
             //for (int i = 0; i < usedSpawnpoints.Length; i++)
@@ -61,13 +64,40 @@ public class LetterSpawner : MonoBehaviour {
 	}
 
 
+    void SpawnStars(int amount)
+    {
+        string word = currentWord.Replace(" ", "");
+        word.ToLower();
+
+
+        if (amountOfWrongLetters + word.Length + amountOfStars < amountOfSpawnpoints)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                int randomIntForSpawnpoint = Random.Range(0, amountOfSpawnpoints);
+                while (usedSpawnpoints[randomIntForSpawnpoint] == true)
+                {
+                    //Debug.Log("Spawnpoint " + randomIntForSpawnpoint + " in use, creating new random");
+                    randomIntForSpawnpoint = Random.Range(0, amountOfSpawnpoints);
+                }
+
+                Instantiate(star, SelectRandomSpawnpoint(randomIntForSpawnpoint), Quaternion.Euler(90.0f, 0, 90.0f));
+                usedSpawnpoints[randomIntForSpawnpoint] = true;
+            }
+        }
+        else
+        {
+            Debug.LogError("Word is too long, not enough spawnpoints for stars!");
+        }
+        
+    }
+
 
     void SpawnRandomWrongLetters(string word)
     {
         word = word.Replace(" ", "");
         word = word.ToLower();
         List<string> alphabets = new List<string> {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "å", "ä", "ö"};
-        int amountOfWrongLetters;
 
         for (int j = 0; j < word.Length; j++)
         {
@@ -82,7 +112,7 @@ public class LetterSpawner : MonoBehaviour {
         }
 
         if (word.Length < 10)
-            amountOfWrongLetters = 5;
+            amountOfWrongLetters = minimumWrongLetters;
         else
             amountOfWrongLetters = word.Length / 2;
 
@@ -93,7 +123,7 @@ public class LetterSpawner : MonoBehaviour {
                 int randomIntForSpawnpoint = Random.Range(0, amountOfSpawnpoints);
                 while (usedSpawnpoints[randomIntForSpawnpoint] == true)
                 {
-                    Debug.Log("Spawnpoint " + randomIntForSpawnpoint + " in use, creating new random");
+                    //Debug.Log("Spawnpoint " + randomIntForSpawnpoint + " in use, creating new random");
                     randomIntForSpawnpoint = Random.Range(0, amountOfSpawnpoints);
                 }
                     
@@ -122,6 +152,7 @@ public class LetterSpawner : MonoBehaviour {
     
     void SpawnLetters(string word)
     {
+        hint = hintsAndWords[0][0];
         currentWord = word;
         word = word.ToLower();
         word = word.Replace(" ", "");
@@ -129,7 +160,7 @@ public class LetterSpawner : MonoBehaviour {
         for (int l = 0; l < word.Length; l++)
         {
             currentWordLettersLeft.Add(word.Substring(l, 1));
-            Debug.Log(currentWordLettersLeft[l]);
+            //Debug.Log(currentWordLettersLeft[l]);
         }
 
         if (word.Length < amountOfSpawnpoints)

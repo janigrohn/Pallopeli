@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BallMovementScript.cs" />
+     <Compile Include="Assets\GUIScript.cs" />
      <Compile Include="Assets\LetterScript.cs" />
      <Compile Include="Assets\LetterSpawner.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
