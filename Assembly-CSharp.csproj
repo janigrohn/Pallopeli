@@ -50,6 +50,8 @@
      <Compile Include="Assets\GUIScript.cs" />
      <Compile Include="Assets\LetterScript.cs" />
      <Compile Include="Assets\LetterSpawner.cs" />
+     <Compile Include="Assets\Points.cs" />
+     <Compile Include="Assets\starScript.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />

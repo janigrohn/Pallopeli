@@ -28,12 +28,15 @@ public class LetterScript : MonoBehaviour {
                 if (LetterSpawner.currentWordLettersLeft.Contains(letter))
                 {
                     Instantiate(rightLetterDeathEffect, transform.position, Quaternion.identity);
+                    Points.score = Points.score + 1000;
+                    GUIScript.ShowPointsChange(1000);
                     GUIScript.GotNewLetter(letter);
                 }
                 else
                 {
                     Instantiate(wrongLetterDeathEffect, transform.position, Quaternion.identity);
-                    // TODO: Miinuspisteitä
+                    Points.score = Points.score - 3000;
+                    GUIScript.ShowPointsChange(-3000);
                 }
 
                 Destroy(this.gameObject);

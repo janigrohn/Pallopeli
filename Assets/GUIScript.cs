@@ -16,31 +16,53 @@ public class GUIScript : MonoBehaviour {
     public GUIStyle style = null;
     public GUIStyle centeredStyle = null;
     public GUIStyle hintStyle;
+    public GUIStyle scoreStyle;
+    public GUIStyle plusScoreStyle;
+    public GUIStyle minusScoreStyle;
 
+    public Texture2D starImage;
+
+    public float showScoreChangeTime = 2.0f;
     public float secondsToWaitAfterCompleting = 3.0f;
+
     int wordWidth;
     int hintWidth;
 
+    static int scoreChangeValue;
+
     bool initialized = false;
     bool allLettersCollected = false;
+    static bool showScoreChange = false;
+    static bool showScoreChange2 = false;  
+    static bool coRoutineRunning = false;
+    static bool coRoutine2Running = false;
 
-	
-	void Start () {
+
+
+    void Start () {
 
         StartCoroutine(Initialize(1.5f));
 
         wordCenter = new Rect(Screen.width / 2 - wordWidth / 2, 15, wordWidth, 25);
 
-}
+        plusScoreStyle.normal.textColor = Color.green;
+        minusScoreStyle.normal.textColor = Color.red;
+        style.normal.textColor = Color.black;
+        centeredStyle.normal.textColor = Color.black;
+        hintStyle.normal.textColor = Color.black;
+        scoreStyle.normal.textColor = Color.black;
+
+    }
 	
 	
 	void Update () {
 
 
-        if (initialized && !currentWordLettersInString.Contains("_"))
-        {
-            allLettersCollected = true;
-        }
+        if (initialized)
+            if (!currentWordLettersInString.Contains("_"))
+            {
+                allLettersCollected = true;
+            }
 
 
         if (allLettersCollected)
@@ -88,16 +110,89 @@ public class GUIScript : MonoBehaviour {
 
     void OnGUI()
     {
-        GUI.color = Color.black;
+        GUI.DrawTexture(new Rect(15, 15, 50, 50), starImage, ScaleMode.ScaleToFit, true, 1.0F);     // Tähtikuvake
 
-        GUI.Label(wordCenter, currentWordLettersInString, centeredStyle);
+        GUI.Label(wordCenter, currentWordLettersInString, centeredStyle);       // Sana
 
-        GUI.Label(new Rect(25, Screen.height - 35, hintWidth, 25), hint, hintStyle);
+        GUI.Label(new Rect(25, Screen.height - 35, hintWidth, 25), hint, hintStyle);        // Vihje
+
+        GUI.Label(new Rect(70, 20, 100, 25), Points.stars.ToString(), style);       // Stars
+
+        if (Points.score.ToString().Length == 1)
+        {
+            GUI.Label(new Rect(Screen.width - 2 * 30, 20, 300, 25), Points.score.ToString(), scoreStyle);       // Score
+        }
+        else if (Points.score.ToString().Length >= 5)
+        {
+            GUI.Label(new Rect(Screen.width - Points.score.ToString().Length * 35, 20, 300, 25), Points.score.ToString(), scoreStyle);
+        } 
+        else
+        {
+            GUI.Label(new Rect(Screen.width - Points.score.ToString().Length * 40, 20, 300, 25), Points.score.ToString(), scoreStyle);
+        }
 
         if (allLettersCollected)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 250, Screen.height / 3, 500, 100), "Word completed!", style);
+            GUI.Label(new Rect(Screen.width / 2 - 200, Screen.height / 3, 500, 100), "Ordet färdig!", style);       // Word completed!
         }
+
+        if (showScoreChange)
+        {
+            if (scoreChangeValue > 0)
+            {
+                GUI.Label(new Rect(Screen.width - 180, 55, 300, 25), "+" + scoreChangeValue, plusScoreStyle);
+            }
+            if (scoreChangeValue < 0)
+            {
+                GUI.Label(new Rect(Screen.width - 180, 60, 300, 25), scoreChangeValue.ToString(), minusScoreStyle);
+            }
+
+            if (!coRoutineRunning)
+                StartCoroutine(ShowScoreChange());
+        }
+
+        if (showScoreChange2)
+        {
+            if (scoreChangeValue > 0)
+            {
+                GUI.Label(new Rect(Screen.width - 180, 55, 300, 25), "+" + scoreChangeValue, plusScoreStyle);
+            }
+            if (scoreChangeValue < 0)
+            {
+                GUI.Label(new Rect(Screen.width - 180, 60, 300, 25), scoreChangeValue.ToString(), minusScoreStyle);
+            }
+
+            if (!coRoutine2Running)
+                StartCoroutine(ShowScoreChange2());
+        }
+
+    }
+
+    public static void ShowPointsChange(int value)
+    {
+        scoreChangeValue = value;
+
+        if (!showScoreChange)
+            showScoreChange = true;
+        else
+            showScoreChange2 = true;    
+        
+    }
+
+    IEnumerator ShowScoreChange()
+    {
+        coRoutineRunning = true;
+        yield return new WaitForSeconds(showScoreChangeTime);
+        showScoreChange = false;
+        coRoutineRunning = false;
+    }
+
+    IEnumerator ShowScoreChange2()
+    {
+        coRoutine2Running = true;
+        yield return new WaitForSeconds(showScoreChangeTime);
+        showScoreChange2 = false;
+        coRoutine2Running = false;
     }
 
 

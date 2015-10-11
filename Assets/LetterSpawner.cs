@@ -41,8 +41,8 @@ public class LetterSpawner : MonoBehaviour {
         hintsAndWords = new string[numRows][];
 
         hintsAndWords[0] = new string[numRows];
-        hintsAndWords[0][0] = "hint1 goes here";    // GET-METODILLA LOBBYN SCRIPTISTÄ!!!!!!!!!!!!!!!!!!!
-        hintsAndWords[0][1] = "random";               // GET-METODILLA LOBBYN SCRIPTISTÄ!!!!!!!!!!!!!!!!!!!
+        hintsAndWords[0][0] = Points.nextHint;
+        hintsAndWords[0][1] = Points.nextWord;
 
     }
 	
