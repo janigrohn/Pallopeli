@@ -143,9 +143,18 @@ public class BallMovementScript : MonoBehaviour
         {
             grounded = true;
             //Debug.Log("Grounded");
+            if (hitInfo.collider.tag.Equals("Booster"))
+            {
+                BoosterScript.onBooster = true;
+            }
+            else
+            {
+                BoosterScript.onBooster = false;
+            }
         }
         else
         {
+            BoosterScript.onBooster = false;
             grounded = false;
             //Debug.Log("In air");
         }
