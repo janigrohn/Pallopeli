@@ -11,7 +11,7 @@ public class Points : MonoBehaviour {
 	
 	void Start () {
 
-        nextHint = "Hint goes here";
+        nextHint = "Hint goes here              WASD liikkuu, F kerää kirjaimia & tähtiä";
         nextWord = "Word";      // Välilyönnit ei (tällä hetkellä) toimi
 	    
 	}
