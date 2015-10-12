@@ -81,7 +81,7 @@ public class LetterSpawner : MonoBehaviour {
                     randomIntForSpawnpoint = Random.Range(0, amountOfSpawnpoints);
                 }
 
-                Instantiate(star, SelectRandomSpawnpoint(randomIntForSpawnpoint), Quaternion.Euler(90.0f, 0, 90.0f));
+                Instantiate(star, SelectRandomSpawnpoint(randomIntForSpawnpoint) + new Vector3(0, 0.5f, 0), Quaternion.Euler(90.0f, 0, 90.0f));
                 usedSpawnpoints[randomIntForSpawnpoint] = true;
             }
         }

@@ -8,6 +8,7 @@ public class LetterScript : MonoBehaviour {
     GameObject ball;
 
     public float distanceToBall = 2.0f;
+    public float rotateSpeed = 100.0f;
 
     string letter;
 
@@ -19,6 +20,8 @@ public class LetterScript : MonoBehaviour {
 	
 	
 	void Update () {
+
+        transform.RotateAround(collider.bounds.center, transform.forward, Time.deltaTime * rotateSpeed);
 
         if (Vector3.Distance(ball.transform.position, transform.position) < distanceToBall)
         {

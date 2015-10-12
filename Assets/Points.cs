@@ -12,7 +12,7 @@ public class Points : MonoBehaviour {
 	void Start () {
 
         nextHint = "Hint goes here";
-        nextWord = "Word";
+        nextWord = "Word";      // Välilyönnit ei (tällä hetkellä) toimi
 	    
 	}
 	
