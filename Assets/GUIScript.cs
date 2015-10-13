@@ -218,7 +218,6 @@ public class GUIScript : MonoBehaviour {
     IEnumerator AllLettersCollected()
     {
         yield return new WaitForSeconds(secondsToWaitAfterCompleting);
-        // TODO: Pisteidenlaskua?
         Application.LoadLevel("Lobby");
     }
 

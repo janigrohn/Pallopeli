@@ -4,8 +4,8 @@ using System.Collections;
 public class BallMovementScript : MonoBehaviour
 {
 
-    public float mouseSpeed = 5.0f;
-    public float xDistance = 5, zDistance = 5, yPosition = 2;
+    float mouseSpeed = 5.0f;
+    public float xDistance = 5, zDistance = 5, yPosition = 1.5f;
     public Transform targetCamera;
 
     public float pushForce = 20;
@@ -30,6 +30,11 @@ public class BallMovementScript : MonoBehaviour
     void Update()
     {
         CheckGroundStatus();
+
+        if (PauseScript.showOptions)
+        {
+            mouseSpeed = PauseScript.mouseSensitivity;
+        }
     }
     
 
@@ -82,20 +87,10 @@ public class BallMovementScript : MonoBehaviour
             }
         }
 
-
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W))
-        {
-            pushForce = originalPushForce / 2;
-        }
-        else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W))
-        {
-            pushForce = originalPushForce / 2;
-        }
-        else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S))
-        {
-            pushForce = originalPushForce / 2;
-        }
-        else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.S))
+        if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W)) ||
+            (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W)) ||
+            (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S)) ||
+            (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.S)))
         {
             pushForce = originalPushForce / 2;
         }
@@ -103,6 +98,27 @@ public class BallMovementScript : MonoBehaviour
         {
             pushForce = originalPushForce;
         }
+
+        //if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W))
+        //{
+        //    pushForce = originalPushForce / 2;
+        //}
+        //else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W))
+        //{
+        //    pushForce = originalPushForce / 2;
+        //}
+        //else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S))
+        //{
+        //    pushForce = originalPushForce / 2;
+        //}
+        //else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.S))
+        //{
+        //    pushForce = originalPushForce / 2;
+        //}
+        //else
+        //{
+        //    pushForce = originalPushForce;
+        //}
 
 
         //how far do you want camera to be placed on the x-axis

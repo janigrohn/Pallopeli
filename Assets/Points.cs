@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Points : MonoBehaviour {
 
     public static int score = 10000;
-    public static int stars = 0;
+    public static int stars = 10;
 
     public static string nextHint;
     public static string nextWord;
@@ -13,18 +13,22 @@ public class Points : MonoBehaviour {
     public static Dictionary<int, string> achievements = new Dictionary<int, string>();
     public static Dictionary<int, bool> achievementsDone = new Dictionary<int, bool>();
 
+    public static Dictionary<int, string> boosters = new Dictionary<int, string>();
+    public static Dictionary<int, bool> boostersBought = new Dictionary<int, bool>();
+    public static Dictionary<int, int> boostersPrice = new Dictionary<int, int>();
+
     void Start () {
 
         nextHint = "Hint goes here              WASD liikkuu, F kerää kirjaimia, ESC pausettaa";
         nextWord = "Word";      // Välilyönnit ei (tällä hetkellä) toimi
 
-        achievements.Add(0, "First word completed");
+        achievements.Add(0, "First word completed(!)");
         achievementsDone.Add(0, false);
 
-        achievements.Add(1, "All stars collected");
+        achievements.Add(1, "All stars collected(!)");
         achievementsDone.Add(1, false);
 
-        achievements.Add(2, "A word in less than a minute");
+        achievements.Add(2, "A word in less than a minute(!)");
         achievementsDone.Add(2, true);
 
         achievements.Add(3, "Random achievement");
@@ -85,6 +89,65 @@ public class Points : MonoBehaviour {
         achievementsDone.Add(21, true);
 
 
+        boosters.Add(0, "Speed +");
+        boostersBought.Add(0, false);
+        boostersPrice.Add(0, 5);
+
+        boosters.Add(1, "Speed +");
+        boostersBought.Add(1, false);
+        boostersPrice.Add(1, 5);
+
+        boosters.Add(2, "Speed +");
+        boostersBought.Add(2, false);
+        boostersPrice.Add(2, 5);
+
+        boosters.Add(3, "Speed ++");
+        boostersBought.Add(3, true);
+        boostersPrice.Add(3, 10);
+
+        boosters.Add(4, "Jumpforce +");
+        boostersBought.Add(4, false);
+        boostersPrice.Add(4, 5);
+
+        boosters.Add(5, "Jumpforce +");
+        boostersBought.Add(5, false);
+        boostersPrice.Add(5, 5);
+
+        boosters.Add(6, "Jumpforce +");
+        boostersBought.Add(6, false);
+        boostersPrice.Add(6, 5);
+
+        boosters.Add(7, "Jumpforce ++");
+        boostersBought.Add(7, true);
+        boostersPrice.Add(7, 10);
+
+        boosters.Add(8, "Jotain +");
+        boostersBought.Add(8, false);
+        boostersPrice.Add(8, 5);
+
+        boosters.Add(9, "Jotain +");
+        boostersBought.Add(9, false);
+        boostersPrice.Add(9, 5);
+
+        boosters.Add(10, "Jotain +");
+        boostersBought.Add(10, true);
+        boostersPrice.Add(10, 5);
+
+        boosters.Add(11, "Jotain +");
+        boostersBought.Add(11, false);
+        boostersPrice.Add(11, 5);
+
+        boosters.Add(12, "Jotain +");
+        boostersBought.Add(12, false);
+        boostersPrice.Add(12, 5);
+
+        boosters.Add(13, "Jotain +");
+        boostersBought.Add(13, false);
+        boostersPrice.Add(13, 5);
+
+        boosters.Add(14, "Jotain +");
+        boostersBought.Add(14, false);
+        boostersPrice.Add(14, 5);
     }
 
 
