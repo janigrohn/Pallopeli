@@ -202,6 +202,8 @@ public class GUIScript : MonoBehaviour {
 
         currentWord = LetterSpawner.currentWord;
         hint = LetterSpawner.hint;
+        currentWordLetters.Clear();
+        currentWordLettersInString = "";
 
         for (int i = 0; i < currentWord.Length; i++)
         {
