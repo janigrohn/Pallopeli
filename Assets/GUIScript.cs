@@ -41,6 +41,7 @@ public class GUIScript : MonoBehaviour {
 
     void Start () {
 
+        currentWordLettersInString = "";
         StartCoroutine(Initialize(1.5f));
 
         wordCenter = new Rect(Screen.width / 2 - wordWidth / 2, 15, wordWidth, 25);
@@ -203,7 +204,7 @@ public class GUIScript : MonoBehaviour {
         currentWord = LetterSpawner.currentWord;
         hint = LetterSpawner.hint;
         currentWordLetters.Clear();
-        currentWordLettersInString = "";
+        
 
         for (int i = 0; i < currentWord.Length; i++)
         {
@@ -220,6 +221,7 @@ public class GUIScript : MonoBehaviour {
     IEnumerator AllLettersCollected()
     {
         yield return new WaitForSeconds(secondsToWaitAfterCompleting);
+        Points.WordCompleted();
         Application.LoadLevel("Lobby");
     }
 

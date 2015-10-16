@@ -16,9 +16,9 @@ public class LobbyGUIScript : MonoBehaviour {
 
     void Start()
     {
-        style.normal.textColor = Color.black;
+        style.normal.textColor = Color.gray;
         centeredStyle.normal.textColor = Color.black;
-        scoreStyle.normal.textColor = Color.black;
+        scoreStyle.normal.textColor = Color.gray;
 
     }
 

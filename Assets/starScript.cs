@@ -29,6 +29,12 @@ public class starScript : MonoBehaviour {
                 Instantiate(starDeathEffect, transform.position, Quaternion.identity);
                 Points.stars++;
 
+                GameObject[] stars = GameObject.FindGameObjectsWithTag("Star");
+                if (stars.Length == 1)
+                {
+                    Points.achievement1Done = true;
+                }
+
                 Destroy(this.gameObject);
             }
 

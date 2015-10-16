@@ -8,10 +8,10 @@ public class BallMovementScript : MonoBehaviour
     public float xDistance = 5, zDistance = 5, yPosition = 1.5f;
     public Transform targetCamera;
 
-    public float pushForce = 20;
-    public float jumpForce = 50.0f;
+    public static float pushForce = 25.0f;
+    public static float jumpForce = 700.0f;
 
-    float originalPushForce;
+    public static float originalPushForce;
     float xpos, zpos;
 
     bool grounded = true;

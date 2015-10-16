@@ -19,7 +19,7 @@ public class LetterSpawner : MonoBehaviour {
 
     public static string currentWord;
     public static string hint;
-    public static List<string> currentWordLettersLeft = new List<string>(); // Muuttuu "*"-merkiksi kun kirjain on otettu
+    public static List<string> currentWordLettersLeft = new List<string>();     // Muuttuu "*"-merkiksi kun kirjain on otettu
     public static List<string> wrongLetters= new List<string>();
 
     public static string letter;
@@ -27,7 +27,7 @@ public class LetterSpawner : MonoBehaviour {
     public int minimumWrongLetters = 5;
     public int amountOfStars = 2;
 
-    void Start () {
+    void Awake () {
 
         for (int i = 0; i < amountOfSpawnpoints; i++)
         {
@@ -43,6 +43,9 @@ public class LetterSpawner : MonoBehaviour {
         hintsAndWords[0] = new string[numRows];
         hintsAndWords[0][0] = Points.nextHint;
         hintsAndWords[0][1] = Points.nextWord;
+
+        currentWordLettersLeft.Clear();
+        wrongLetters.Clear();
 
     }
 	

@@ -59,14 +59,18 @@ public class StarShopScript : MonoBehaviour {
     {
         if (showStarShop)
         {
-            scrollposition = GUI.BeginScrollView(new Rect(Screen.width - 820, 100, 800, Screen.height / 2 + 200), scrollposition, new Rect(0, 0, 780, Points.boosters.Count * 55), false, true);
+            //if (Points.boosters.Count > 8)
+            //    scrollposition = GUI.BeginScrollView(new Rect(Screen.width - 820, 100, 800, Screen.height / 2 + 200), scrollposition, new Rect(0, 0, 780, Points.boosters.Count * 55), false, true);
+
+            //else
+                GUILayout.BeginArea(new Rect(Screen.width - 820, 100, 800, Screen.height / 2 + 200));
 
             GUILayout.BeginArea(new Rect(100, 0, 780, Points.boosters.Count * 55));
 
 
             for (int i = 0; i < Points.boosters.Count; i++)
             {
-                string text = "Price: " + Points.boostersPrice[i] + " stars";
+                string text = "Pris: " + Points.boostersPrice[i] + " stjärnor";
 
                 if (Points.boostersBought[i] != true)
                 {
@@ -83,7 +87,7 @@ public class StarShopScript : MonoBehaviour {
                 }
                 else
                 {
-                    text = "Booster owned";
+                    text = "Booster ägt";
 
                     if (GUILayout.Button(Points.boosters[i], doneStyle))
                     {
@@ -97,7 +101,11 @@ public class StarShopScript : MonoBehaviour {
 
             GUILayout.EndArea();
 
-            GUI.EndScrollView();
+            //if (Points.boosters.Count > 8)
+            //    GUI.EndScrollView();
+
+            //else
+                GUILayout.EndArea();
         }
     }
 

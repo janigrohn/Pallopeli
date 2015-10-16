@@ -52,7 +52,7 @@ public class PauseScript : MonoBehaviour {
             if (GUILayout.Button("Fortsätt", buttonStyle))
                 paused = togglePause();
 
-            if (GUILayout.Button("Achievements(!)", buttonStyle))
+            if (GUILayout.Button("Prestationer", buttonStyle))
             {
                 if (!showAchievements)
                 {
@@ -63,7 +63,7 @@ public class PauseScript : MonoBehaviour {
                     showAchievements = false;
             }
 
-            if (GUILayout.Button("Options(!)", buttonStyle))
+            if (GUILayout.Button("inställningar", buttonStyle))
             {
                 if (!showOptions)
                 {
@@ -96,7 +96,7 @@ public class PauseScript : MonoBehaviour {
             if (GUILayout.Button("Fortsätt", buttonStyle))
                 paused = togglePause();
 
-            if (GUILayout.Button("Achievements(!)", buttonStyle))
+            if (GUILayout.Button("Prestationer", buttonStyle))
             {
                 if (!showAchievements)
                 {
@@ -107,7 +107,7 @@ public class PauseScript : MonoBehaviour {
                     showAchievements = false;
             }
 
-            if (GUILayout.Button("Options(!)", buttonStyle))
+            if (GUILayout.Button("inställningar", buttonStyle))
             {
                 if (!showOptions)
                 {
@@ -178,13 +178,13 @@ public class PauseScript : MonoBehaviour {
         {
             showAchievements = false;
             showOptions = false;
-            StarShopScript.showStarShop = false;
             Time.timeScale = 1f;
             //Destroy(GameObject.Find("DimPlane(Clone)"));
             return (false);
         }
         else
         {
+            StarShopScript.showStarShop = false;
             Time.timeScale = 0f;
             //Instantiate(dimPlane, camera.position + camera.forward * 1, Quaternion.identity);
             return (true);
