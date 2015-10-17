@@ -9,7 +9,7 @@ public class StarShopScript : MonoBehaviour {
 
     public static bool showStarShop = false;
 
-    Vector2 scrollposition = Vector2.zero;
+    //Vector2 scrollposition = Vector2.zero;
     public GUIStyle style = null;
     public GUIStyle emptyStyle = null;
     public GUIStyle doneStyle = null;

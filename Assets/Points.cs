@@ -19,6 +19,7 @@ public class Points : MonoBehaviour {
 
     public static Dictionary<int, string> achievements = new Dictionary<int, string>();
     public static Dictionary<int, bool> achievementsDone = new Dictionary<int, bool>();
+    public static Dictionary<int, bool> achievementsShown = new Dictionary<int, bool>();
 
     public static Dictionary<int, string> boosters = new Dictionary<int, string>();
     public static Dictionary<int, bool> boostersBought = new Dictionary<int, bool>();
@@ -27,17 +28,7 @@ public class Points : MonoBehaviour {
     public static Dictionary<int, string> hints = new Dictionary<int, string>();
     public static Dictionary<int, string> words = new Dictionary<int, string>();
 
-    bool achievement0Shown = false;
-    bool achievement1Shown = false;
-    //bool achievement3Shown = false;
-    //bool achievement4Shown = false;
-    //bool achievement5Shown = false;
-    //bool achievement6Shown = false;
-    //bool achievement7Shown = false;
-    //bool achievement8Shown = false;
-    //bool achievement9Shown = false;
 
-    public static bool achievement1Done = false;
 
     void Start () {
 
@@ -47,10 +38,10 @@ public class Points : MonoBehaviour {
         {
 
             hints.Add(0, "First hint goes here: word         WASD rörelse, F använd, ESC paus");
-            words.Add(0, "Word");
+            words.Add(0, "w");
 
             hints.Add(1, "Second hint goes here: sana");
-            words.Add(1, "Sana");
+            words.Add(1, "s");
 
             hints.Add(2, "Third hint goes here: ord");      // TÄHÄN LISÄTÄÄN VIHJEET
             words.Add(2, "Ord");                            // TÄHÄN LISÄTÄÄN SANAT
@@ -59,69 +50,68 @@ public class Points : MonoBehaviour {
 
             achievements.Add(0, "Första ordet");     // TÄHÄN LISÄTÄÄN ACHIEVEMENTIT
             achievementsDone.Add(0, false);          // TÄHÄN LAITETAAN TIETO SIITÄ ONKO SE SUORITTETTU
+            achievementsShown.Add(0, false);
 
             achievements.Add(1, "Alla stjärnor samlas");
             achievementsDone.Add(1, false);
+            achievementsShown.Add(1, false);
 
             achievements.Add(2, "Random achievement");
             achievementsDone.Add(2, false);
+            achievementsShown.Add(2, false);
 
             achievements.Add(3, "Random achievement");
             achievementsDone.Add(3, false);
+            achievementsShown.Add(3, false);
 
             achievements.Add(4, "Random achievement");
             achievementsDone.Add(4, false);
+            achievementsShown.Add(4, false);
 
             achievements.Add(5, "Random achievement");
             achievementsDone.Add(5, false);
+            achievementsShown.Add(5, false);
 
             achievements.Add(6, "Random achievement");
             achievementsDone.Add(6, false);
+            achievementsShown.Add(6, false);
 
             achievements.Add(7, "Random achievement");
             achievementsDone.Add(7, false);
+            achievementsShown.Add(7, false);
 
             achievements.Add(8, "Random achievement");
             achievementsDone.Add(8, false);
+            achievementsShown.Add(8, false);
 
             achievements.Add(9, "Random achievement");
             achievementsDone.Add(9, false);
+            achievementsShown.Add(9, false);
 
             achievements.Add(10, "Random achievement");
             achievementsDone.Add(10, false);
+            achievementsShown.Add(10, false);
 
             achievements.Add(11, "Random achievement");
             achievementsDone.Add(11, false);
+            achievementsShown.Add(11, false);
 
             achievements.Add(12, "Random achievement");
             achievementsDone.Add(12, false);
+            achievementsShown.Add(12, false);
 
             achievements.Add(13, "Random achievement");
             achievementsDone.Add(13, false);
+            achievementsShown.Add(13, false);
 
             achievements.Add(14, "Random achievement");
             achievementsDone.Add(14, false);
+            achievementsShown.Add(14, false);
 
             achievements.Add(15, "Random achievement");
             achievementsDone.Add(15, false);
+            achievementsShown.Add(16, false);
 
-            achievements.Add(16, "Random achievement");
-            achievementsDone.Add(16, false);
-
-            achievements.Add(17, "Random achievement");
-            achievementsDone.Add(17, false);
-
-            achievements.Add(18, "Random achievement");
-            achievementsDone.Add(18, false);
-
-            achievements.Add(19, "Random achievement");
-            achievementsDone.Add(19, false);
-
-            achievements.Add(20, "Random achievement");
-            achievementsDone.Add(20, false);
-
-            achievements.Add(21, "Random achievement");
-            achievementsDone.Add(21, false);
 
 
             boosters.Add(0, "hastighet +");         // TÄHÄN LISÄTÄÄN BOOSTERIT
@@ -166,13 +156,13 @@ public class Points : MonoBehaviour {
         if (boostersBought[0])
         {
             BallMovementScript.pushForce += 3;
-            BallMovementScript.originalPushForce = BallMovementScript.pushForce;
+            BallMovementScript.originalPushForce += 3;
         }
 
         if (boostersBought[1])
         {
             BallMovementScript.pushForce += 8;
-            BallMovementScript.originalPushForce = BallMovementScript.pushForce;
+            BallMovementScript.originalPushForce += 8;
         }
 
         if (boostersBought[2])
@@ -186,12 +176,13 @@ public class Points : MonoBehaviour {
         }
 
 
-        if (!achievement0Shown && indexOfNextWord == 1)
+        if (!achievementsShown[0] && indexOfNextWord == 1)
         {
-            achievement0Shown = true;
-            achievementsDone[1] = true;
+            achievementsShown[0] = true;
+            achievementsDone[0] = true;
             AchievementCompleted(achievements[0]);
         }
+
 
     }
 
@@ -228,11 +219,11 @@ public class Points : MonoBehaviour {
     }
 
 
-    void Update () {
-        
-        if (!achievement1Shown && achievement1Done)
+    void Update() {
+
+        if (!achievementsShown[1] && achievementsDone[1])
         {
-            achievement1Shown = true;
+            achievementsShown[1] = true;
             achievementsDone[1] = true;
             AchievementCompleted(achievements[1]);
         }

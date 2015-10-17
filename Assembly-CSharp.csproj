@@ -56,6 +56,7 @@
      <Compile Include="Assets\PauseScript.cs" />
      <Compile Include="Assets\Points.cs" />
      <Compile Include="Assets\PortalScript.cs" />
+     <Compile Include="Assets\ScoreCounter.cs" />
      <Compile Include="Assets\StarShopScript.cs" />
      <Compile Include="Assets\starScript.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />

@@ -32,7 +32,7 @@ public class starScript : MonoBehaviour {
                 GameObject[] stars = GameObject.FindGameObjectsWithTag("Star");
                 if (stars.Length == 1)
                 {
-                    Points.achievement1Done = true;
+                    Points.achievementsDone[1] = true;
                 }
 
                 Destroy(this.gameObject);

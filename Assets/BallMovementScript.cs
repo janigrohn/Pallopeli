@@ -11,7 +11,7 @@ public class BallMovementScript : MonoBehaviour
     public static float pushForce = 25.0f;
     public static float jumpForce = 700.0f;
 
-    public static float originalPushForce;
+    public static float originalPushForce = 25.0f;
     float xpos, zpos;
 
     bool grounded = true;
@@ -23,7 +23,7 @@ public class BallMovementScript : MonoBehaviour
 
     void Start()
     {
-        originalPushForce = pushForce;
+
     }
 
 
