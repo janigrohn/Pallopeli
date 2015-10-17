@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class LetterSpawner : MonoBehaviour {
 
-    public Transform letterSpawnpoint0, letterSpawnpoint1, letterSpawnpoint2, letterSpawnpoint3, letterSpawnpoint4, letterSpawnpoint5, letterSpawnpoint6, letterSpawnpoint7, letterSpawnpoint8, letterSpawnpoint9, letterSpawnpoint10, letterSpawnpoint11, letterSpawnpoint12, letterSpawnpoint13, letterSpawnpoint14, letterSpawnpoint15;
-    static int amountOfSpawnpoints = 16;    // MUUTA AINA KUN LISÄÄT SPAWNPOINTEJA
+    public Transform letterSpawnpoint0, letterSpawnpoint1, letterSpawnpoint2, letterSpawnpoint3, letterSpawnpoint4, letterSpawnpoint5, letterSpawnpoint6, letterSpawnpoint7, letterSpawnpoint8, letterSpawnpoint9, letterSpawnpoint10, letterSpawnpoint11, letterSpawnpoint12, letterSpawnpoint13, letterSpawnpoint14, letterSpawnpoint15, letterSpawnpoint16, letterSpawnpoint17, letterSpawnpoint18, letterSpawnpoint19, letterSpawnpoint20;
+    static int amountOfSpawnpoints = 21;    // MUUTA AINA KUN LISÄÄT SPAWNPOINTEJA
 
     public Transform letterA, letterB, letterC, letterD, letterE, letterF, letterG, letterH, letterI, letterJ, letterK, letterL, letterM, letterN, letterO, letterP, letterQ, letterR, letterS, letterT, letterU, letterV, letterW, letterX, letterY, letterZ, letterÅ, letterÄ, letterÖ;
     public Transform star;
@@ -564,6 +564,21 @@ public class LetterSpawner : MonoBehaviour {
 
             case 15:
                 return letterSpawnpoint15.position + new Vector3(0, 0.5f, 0);
+
+            case 16:
+                return letterSpawnpoint16.position + new Vector3(0, 0.5f, 0);
+
+            case 17:
+                return letterSpawnpoint17.position + new Vector3(0, 0.5f, 0);
+
+            case 18:
+                return letterSpawnpoint18.position + new Vector3(0, 0.5f, 0);
+
+            case 19:
+                return letterSpawnpoint19.position + new Vector3(0, 0.5f, 0);
+
+            case 20:
+                return letterSpawnpoint20.position + new Vector3(0, 0.5f, 0);
 
             default:
                 Debug.LogWarning("Couldn't define spawnpoint from random int " + random);

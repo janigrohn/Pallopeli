@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Points : MonoBehaviour {
 
     public static int score = 10000;
-    public static int stars = 0;
+    public static int stars = 100;
     public float secondsToShowAchievementGained = 4.0f;
 
     string achievementText;
@@ -38,10 +38,10 @@ public class Points : MonoBehaviour {
         {
 
             hints.Add(0, "First hint goes here: word         WASD rörelse, F använd, ESC paus");
-            words.Add(0, "w");
+            words.Add(0, "Word");
 
             hints.Add(1, "Second hint goes here: sana");
-            words.Add(1, "s");
+            words.Add(1, "Sana");
 
             hints.Add(2, "Third hint goes here: ord");      // TÄHÄN LISÄTÄÄN VIHJEET
             words.Add(2, "Ord");                            // TÄHÄN LISÄTÄÄN SANAT
@@ -56,19 +56,19 @@ public class Points : MonoBehaviour {
             achievementsDone.Add(1, false);
             achievementsShown.Add(1, false);
 
-            achievements.Add(2, "Random achievement");
+            achievements.Add(2, "Random achievement");      // Pomppaa 50 kertaa
             achievementsDone.Add(2, false);
             achievementsShown.Add(2, false);
 
-            achievements.Add(3, "Random achievement");
+            achievements.Add(3, "Random achievement");      // Pomppaa 100 kertaa
             achievementsDone.Add(3, false);
             achievementsShown.Add(3, false);
 
-            achievements.Add(4, "Random achievement");
+            achievements.Add(4, "Random achievement");      // Pomppaa 200 kertaa
             achievementsDone.Add(4, false);
             achievementsShown.Add(4, false);
 
-            achievements.Add(5, "Random achievement");
+            achievements.Add(5, "Random achievement");      // 
             achievementsDone.Add(5, false);
             achievementsShown.Add(5, false);
 
