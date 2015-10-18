@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-public class LobbyGUIScript : MonoBehaviour {
+public class LobbyGUIScript : MonoBehaviour
+{
 
     public Rect wordCenter;
 

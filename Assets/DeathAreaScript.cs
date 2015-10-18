@@ -24,6 +24,7 @@ public class DeathAreaScript : MonoBehaviour {
         {
             ball.transform.position = ballSpawnpoint.position;
 
+            Points.deaths++;
             Points.score = Points.score - 2000;
             GUIScript.ShowPointsChange(-2000);
         }

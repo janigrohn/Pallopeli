@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-public class GUIScript : MonoBehaviour {
+public class GUIScript : MonoBehaviour
+{
 
     string hint;
     string currentWord;
@@ -33,13 +34,14 @@ public class GUIScript : MonoBehaviour {
     bool initialized = false;
     bool allLettersCollected = false;
     static bool showScoreChange = false;
-    static bool showScoreChange2 = false;  
+    static bool showScoreChange2 = false;
     static bool coRoutineRunning = false;
     static bool coRoutine2Running = false;
 
 
 
-    void Start () {
+    void Start()
+    {
 
         currentWordLettersInString = "";
         StartCoroutine(Initialize(1.5f));
@@ -54,9 +56,10 @@ public class GUIScript : MonoBehaviour {
         scoreStyle.normal.textColor = Color.black;
 
     }
-	
-	
-	void Update () {
+
+
+    void Update()
+    {
 
 
         if (initialized)
@@ -80,7 +83,7 @@ public class GUIScript : MonoBehaviour {
         //    }
         //}
 
-	}
+    }
 
     public static void GotNewLetter(string letter)
     {
@@ -99,7 +102,7 @@ public class GUIScript : MonoBehaviour {
             aStringBuilder.Remove(index * 2 + 1, 1);
             aStringBuilder.Insert(index * 2 + 1, letter);
         }
-        
+
         currentWordLettersInString = aStringBuilder.ToString();
 
         LetterSpawner.currentWordLettersLeft[index] = "*";
@@ -126,7 +129,7 @@ public class GUIScript : MonoBehaviour {
         else if (Points.score.ToString().Length >= 5)
         {
             GUI.Label(new Rect(Screen.width - Points.score.ToString().Length * 35, 20, 300, 25), Points.score.ToString(), scoreStyle);
-        } 
+        }
         else
         {
             GUI.Label(new Rect(Screen.width - Points.score.ToString().Length * 40, 20, 300, 25), Points.score.ToString(), scoreStyle);
@@ -176,8 +179,8 @@ public class GUIScript : MonoBehaviour {
         if (!showScoreChange)
             showScoreChange = true;
         else
-            showScoreChange2 = true;    
-        
+            showScoreChange2 = true;
+
     }
 
     IEnumerator ShowScoreChange()
@@ -204,7 +207,7 @@ public class GUIScript : MonoBehaviour {
         currentWord = LetterSpawner.currentWord;
         hint = LetterSpawner.hint;
         currentWordLetters.Clear();
-        
+
 
         for (int i = 0; i < currentWord.Length; i++)
         {

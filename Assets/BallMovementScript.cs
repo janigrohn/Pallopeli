@@ -12,6 +12,7 @@ public class BallMovementScript : MonoBehaviour
     public static float jumpForce = 700.0f;
 
     public static float originalPushForce = 25.0f;
+    public static float originalJumpForce = 700.0f;
     float xpos, zpos;
 
     bool grounded = true;
@@ -36,7 +37,7 @@ public class BallMovementScript : MonoBehaviour
             mouseSpeed = PauseScript.mouseSensitivity;
         }
     }
-    
+
 
     void FixedUpdate()
     {
@@ -64,7 +65,8 @@ public class BallMovementScript : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(KeyCode.S))
+        {
             if (!buttonDown)
             {
                 reverseDirection = -targetCamera.forward;
@@ -72,7 +74,7 @@ public class BallMovementScript : MonoBehaviour
             buttonDown = true;
             transform.rigidbody.AddForce(reverseDirection * pushForce * 0.5f);
         }
-        
+
         if (Input.GetKeyUp(KeyCode.S))
         {
             buttonDown = false;
@@ -84,6 +86,21 @@ public class BallMovementScript : MonoBehaviour
             if (grounded)
             {
                 transform.rigidbody.AddForce(new Vector3(0, jumpForce, 0));
+                Points.jumps++;
+
+                if (Points.jumps == 50)
+                {
+                    Points.achievementsDone[2] = true;
+                }
+                else if (Points.jumps == 100)
+                {
+                    Points.achievementsDone[3] = true;
+                }
+                else if (Points.jumps == 200)
+                {
+                    Points.achievementsDone[4] = true;
+                }
+
             }
         }
 

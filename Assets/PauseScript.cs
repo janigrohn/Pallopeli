@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PauseScript : MonoBehaviour {
+public class PauseScript : MonoBehaviour
+{
 
     public static bool paused = false;
     bool showAchievements = false;
@@ -21,7 +22,7 @@ public class PauseScript : MonoBehaviour {
     Vector2 scrollposition = Vector2.zero;
     float hScrollbarValue;
 
-    void Start ()
+    void Start()
     {
         style.normal.textColor = Color.black;
         doneStyle.normal.textColor = Color.green;
@@ -58,7 +59,7 @@ public class PauseScript : MonoBehaviour {
                 {
                     showOptions = false;
                     showAchievements = true;
-                } 
+                }
                 else
                     showAchievements = false;
             }
@@ -136,7 +137,7 @@ public class PauseScript : MonoBehaviour {
             GUILayout.BeginArea(new Rect(100, 0, 780, Points.achievements.Count * 35));
 
 
-            for(int i = 0; i < Points.achievements.Count; i++)
+            for (int i = 0; i < Points.achievements.Count; i++)
             {
                 if (Points.achievementsDone[i] != true)
                 {
@@ -146,11 +147,11 @@ public class PauseScript : MonoBehaviour {
                 {
                     GUILayout.Label(Points.achievements[i], doneStyle);
                 }
-                
+
                 GUILayout.Label(" ", emptyStyle);
             }
-            
-            
+
+
             GUILayout.EndArea();
 
             GUI.EndScrollView();

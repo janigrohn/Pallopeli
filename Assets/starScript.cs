@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class starScript : MonoBehaviour {
+public class starScript : MonoBehaviour
+{
 
     public bool isPickable = true;
     public Transform starDeathEffect;

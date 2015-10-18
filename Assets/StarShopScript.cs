@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StarShopScript : MonoBehaviour {
+public class StarShopScript : MonoBehaviour
+{
 
     GameObject ball;
 
@@ -16,7 +17,8 @@ public class StarShopScript : MonoBehaviour {
     public GUIStyle notDoneStyle = null;
     public GUIStyle priceStyle = null;
 
-    void Start () {
+    void Start()
+    {
 
         ball = GameObject.FindGameObjectWithTag("Player");
 
@@ -24,9 +26,10 @@ public class StarShopScript : MonoBehaviour {
         notDoneStyle.normal.textColor = Color.red;
         priceStyle.normal.textColor = Color.gray;
     }
-	
-	
-	void Update () {
+
+
+    void Update()
+    {
 
         if (Vector3.Distance(ball.transform.position, transform.position) < distanceToBall)
         {
@@ -63,7 +66,7 @@ public class StarShopScript : MonoBehaviour {
             //    scrollposition = GUI.BeginScrollView(new Rect(Screen.width - 820, 100, 800, Screen.height / 2 + 200), scrollposition, new Rect(0, 0, 780, Points.boosters.Count * 55), false, true);
 
             //else
-                GUILayout.BeginArea(new Rect(Screen.width - 820, 100, 800, Screen.height / 2 + 200));
+            GUILayout.BeginArea(new Rect(Screen.width - 820, 100, 800, Screen.height / 2 + 200));
 
             GUILayout.BeginArea(new Rect(100, 0, 780, Points.boosters.Count * 55));
 
@@ -74,7 +77,7 @@ public class StarShopScript : MonoBehaviour {
 
                 if (Points.boostersBought[i] != true)
                 {
-                    
+
                     if (GUILayout.Button(Points.boosters[i], notDoneStyle))
                     {
                         if (Points.stars >= Points.boostersPrice[i])
@@ -91,7 +94,7 @@ public class StarShopScript : MonoBehaviour {
 
                     if (GUILayout.Button(Points.boosters[i], doneStyle))
                     {
-                        
+
                     }
                 }
                 GUILayout.Label(text, priceStyle);
@@ -105,7 +108,7 @@ public class StarShopScript : MonoBehaviour {
             //    GUI.EndScrollView();
 
             //else
-                GUILayout.EndArea();
+            GUILayout.EndArea();
         }
     }
 

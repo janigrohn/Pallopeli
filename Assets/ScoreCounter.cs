@@ -6,7 +6,7 @@ public class ScoreCounter : MonoBehaviour {
 	
 	void Start () {
 
-        InvokeRepeating("DecreaseScore", 0.0f, 5.0f);
+        InvokeRepeating("DecreaseScore", 0.0f, 4.0f);
 	}
 	
 	
@@ -17,7 +17,7 @@ public class ScoreCounter : MonoBehaviour {
 
     void DecreaseScore()
     {
-        Points.score -= 50;
+        Points.score -= 20;
     }
 
 

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LetterScript : MonoBehaviour {
+public class LetterScript : MonoBehaviour
+{
 
     public Transform rightLetterDeathEffect;
     public Transform wrongLetterDeathEffect;
@@ -12,14 +13,16 @@ public class LetterScript : MonoBehaviour {
 
     string letter;
 
-    void Awake () {
+    void Awake()
+    {
 
         ball = GameObject.FindGameObjectWithTag("Player");
         letter = LetterSpawner.letter;
-	}
-	
-	
-	void Update () {
+    }
+
+
+    void Update()
+    {
 
         transform.RotateAround(collider.bounds.center, transform.forward, Time.deltaTime * rotateSpeed);
 
@@ -31,8 +34,8 @@ public class LetterScript : MonoBehaviour {
                 if (LetterSpawner.currentWordLettersLeft.Contains(letter))
                 {
                     Instantiate(rightLetterDeathEffect, transform.position, Quaternion.identity);
-                    Points.score = Points.score + 1000;
-                    GUIScript.ShowPointsChange(1000);
+                    Points.score = Points.score + 2000;
+                    GUIScript.ShowPointsChange(2000);
                     GUIScript.GotNewLetter(letter);
                 }
                 else
@@ -44,7 +47,7 @@ public class LetterScript : MonoBehaviour {
 
                 Destroy(this.gameObject);
             }
-            
+
         }
 
     }
