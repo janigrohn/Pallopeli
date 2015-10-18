@@ -9,7 +9,7 @@ public class Points : MonoBehaviour
     public static int stars = 100;
     public static int jumps = 0;
     public static int deaths = 0;
-    public float secondsToShowAchievementGained = 4.0f;
+    public float secondsToShowAchievementGained = 5.0f;
 
     string achievementText;
     bool showAchievementText = false;

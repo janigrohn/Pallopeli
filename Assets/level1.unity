@@ -2074,7 +2074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b665ceedf95228240a45983951b0addf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsToShowAchievementGained: 4
+  secondsToShowAchievementGained: 5
   achievementStyle:
     m_Name: 
     m_Normal:
